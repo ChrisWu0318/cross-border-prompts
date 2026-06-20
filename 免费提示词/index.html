@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>跨境提示词库 · 跨境电商 AI 提示词(24条)</title>
+<meta name="description" content="经过结构化设计、可直接复制的实战 AI 提示词库,覆盖内容创作、营销获客、电商、职场、知识变现全场景。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#100d0a;
+    --surface:#191410;
+    --surface-2:#221b15;
+    --surface-3:#2a221b;
+    --line:#332a21;
+    --line-2:#473a2d;
+    --gold:#cda860;
+    --gold-bright:#eccd86;
+    --gold-deep:#8a6f3e;
+    --text:#ece4d6;
+    --muted:#9d9183;
+    --muted-2:#6e6457;
+    --jade:#88b39a;
+    --rose:#d08a6a;
+    --radius:14px;
+    --maxw:1240px;
+    --serif:"Noto Serif SC",serif;
+    --sans:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    --mono:"JetBrains Mono","SFMono-Regular",Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+    min-height:100vh;
+  }
+  /* grain overlay */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* atmospheric glow */
+  body::after{
+    content:"";position:fixed;top:-260px;left:50%;transform:translateX(-50%);
+    width:1100px;height:620px;z-index:0;pointer-events:none;
+    background:radial-gradient(ellipse at center,rgba(205,168,96,.16),rgba(205,168,96,0) 65%);
+    filter:blur(20px);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+  /* ---------- top bar ---------- */
+  header.top{
+    position:sticky;top:0;z-index:40;
+    backdrop-filter:blur(10px);
+    background:rgba(16,13,10,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+  .brand .mark{
+    width:34px;height:34px;border-radius:8px;flex:none;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold-deep));
+    display:grid;place-items:center;color:#1a140b;font-family:var(--serif);font-weight:900;font-size:20px;
+    box-shadow:0 4px 18px rgba(205,168,96,.32);
+  }
+  .brand b{font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:.5px}
+  .brand span{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:2px;display:block;margin-top:-3px}
+  .top-actions{display:flex;align-items:center;gap:10px}
+  .fav-toggle{
+    display:flex;align-items:center;gap:7px;cursor:pointer;
+    background:var(--surface-2);border:1px solid var(--line-2);color:var(--muted);
+    padding:8px 14px;border-radius:999px;font-size:13px;font-family:var(--sans);transition:.2s;
+  }
+  .fav-toggle:hover{color:var(--text);border-color:var(--gold-deep)}
+  .fav-toggle.on{color:var(--gold-bright);border-color:var(--gold);background:rgba(205,168,96,.08)}
+  .fav-toggle .star{font-size:14px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:72px 0 40px;text-align:center;position:relative}
+  .kicker{
+    font-family:var(--mono);font-size:12px;letter-spacing:4px;color:var(--gold);
+    text-transform:uppercase;margin-bottom:22px;
+    display:inline-flex;align-items:center;gap:12px;
+  }
+  .kicker::before,.kicker::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-deep))}
+  .kicker::after{background:linear-gradient(90deg,var(--gold-deep),transparent)}
+  .hero h1{
+    font-family:var(--serif);font-weight:900;
+    font-size:clamp(38px,7vw,76px);line-height:1.08;letter-spacing:1px;
+    margin-bottom:20px;
+  }
+  .hero h1 .em{
+    color:transparent;background:linear-gradient(120deg,var(--gold-bright),var(--gold),var(--gold-deep));
+    -webkit-background-clip:text;background-clip:text;
+    font-style:italic;position:relative;white-space:nowrap;
+  }
+  .hero .lead{
+    font-size:clamp(15px,2.1vw,19px);color:var(--muted);max-width:680px;margin:0 auto 12px;font-weight:300;
+  }
+  .hero .lead b{color:var(--gold-bright);font-weight:500}
+  .hero .sub{font-size:14px;color:var(--muted-2);max-width:620px;margin:0 auto 38px}
+
+  /* search */
+  .search-box{position:relative;max-width:600px;margin:0 auto 30px}
+  .search-box svg{position:absolute;left:20px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--muted);pointer-events:none}
+  .search-box input{
+    width:100%;background:var(--surface-2);border:1px solid var(--line-2);
+    color:var(--text);font-family:var(--sans);font-size:16px;
+    padding:17px 56px 17px 52px;border-radius:999px;outline:none;transition:.25s;
+  }
+  .search-box input::placeholder{color:var(--muted-2)}
+  .search-box input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(205,168,96,.12),0 8px 30px rgba(0,0,0,.4)}
+  .search-box kbd{
+    position:absolute;right:18px;top:50%;transform:translateY(-50%);
+    font-family:var(--mono);font-size:12px;color:var(--muted-2);
+    border:1px solid var(--line-2);border-radius:6px;padding:2px 8px;background:var(--surface)
+  }
+
+  /* stats */
+  .stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+  .stat{display:flex;flex-direction:column;align-items:center}
+  .stat .num{font-family:var(--serif);font-weight:700;font-size:34px;color:var(--gold-bright);line-height:1}
+  .stat .lab{font-family:var(--mono);font-size:11px;color:var(--muted-2);letter-spacing:2px;margin-top:8px;text-transform:uppercase}
+
+  /* ---------- filter bar ---------- */
+  .filterbar{position:sticky;top:64px;z-index:30;padding:18px 0;background:rgba(16,13,10,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .pill{
+    cursor:pointer;border:1px solid var(--line-2);background:var(--surface-2);
+    color:var(--muted);font-family:var(--sans);font-size:13.5px;font-weight:500;
+    padding:9px 18px;border-radius:999px;transition:.2s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  }
+  .pill:hover{color:var(--text);border-color:var(--gold-deep);transform:translateY(-1px)}
+  .pill.active{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#1a140b;border-color:var(--gold);font-weight:700}
+  .pill .cnt{font-family:var(--mono);font-size:11px;opacity:.7}
+  .pill.active .cnt{opacity:.85}
+
+  /* ---------- grid ---------- */
+  main{padding:40px 0 80px;min-height:50vh}
+  .result-meta{font-family:var(--mono);font-size:12px;color:var(--muted-2);letter-spacing:1px;margin-bottom:24px;text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+  .card{
+    background:linear-gradient(180deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;display:flex;flex-direction:column;position:relative;overflow:hidden;
+    cursor:pointer;transition:transform .25s cubic-bezier(.2,.7,.3,1),border-color .25s,box-shadow .25s;
+    animation:rise .6s both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .card::before{content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1px;background:linear-gradient(140deg,rgba(205,168,96,.5),transparent 40%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:.3s}
+  .card:hover{transform:translateY(-5px);border-color:var(--gold-deep);box-shadow:0 18px 44px -16px rgba(0,0,0,.7)}
+  .card:hover::before{opacity:1}
+  .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .card-no{font-family:var(--mono);font-size:12px;color:var(--gold-deep);letter-spacing:1px}
+  .card-badges{display:flex;align-items:center;gap:8px}
+  .cat-tag{font-size:11px;font-family:var(--sans);color:var(--gold);border:1px solid var(--gold-deep);border-radius:999px;padding:3px 10px;white-space:nowrap}
+  .pro-badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1px;color:#1a140b;background:linear-gradient(135deg,var(--gold-bright),var(--gold));padding:3px 8px;border-radius:5px}
+  .fav-star{cursor:pointer;font-size:17px;color:var(--muted-2);transition:.2s;line-height:1;user-select:none}
+  .fav-star:hover{color:var(--gold)}
+  .fav-star.on{color:var(--gold-bright)}
+  .card h3{font-family:var(--serif);font-weight:700;font-size:21px;line-height:1.3;margin-bottom:9px}
+  .card .desc{font-size:13.5px;color:var(--muted);margin-bottom:16px;flex:none}
+  .prompt-prev{
+    position:relative;background:var(--bg);border:1px solid var(--line);border-radius:9px;
+    padding:14px 15px;font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--muted);
+    white-space:pre-wrap;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
+    margin-bottom:16px;flex:1;
+  }
+  .prompt-prev.locked{filter:blur(5px);user-select:none}
+  .lock-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:rgba(16,13,10,.35);border-radius:9px}
+  .lock-overlay span{font-size:13px;color:var(--gold-bright);font-weight:500}
+  .lock-overlay small{font-family:var(--mono);font-size:10px;color:var(--muted)}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+  .tag{font-family:var(--mono);font-size:10.5px;color:var(--muted-2);background:var(--surface-3);padding:3px 9px;border-radius:5px}
+  .card-foot{display:flex;gap:10px;margin-top:auto}
+  .btn{
+    flex:1;cursor:pointer;border:none;border-radius:9px;padding:11px;font-family:var(--sans);font-size:13.5px;font-weight:500;
+    display:flex;align-items:center;justify-content:center;gap:7px;transition:.2s;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#1a140b;font-weight:700}
+  .btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn-ghost{background:var(--surface-3);color:var(--muted);border:1px solid var(--line-2);flex:none;width:46px}
+  .btn-ghost:hover{color:var(--text);border-color:var(--gold-deep)}
+  .btn.copied{background:var(--jade)!important;color:#0f1a13!important}
+
+  /* empty */
+  .empty{text-align:center;padding:80px 20px;color:var(--muted-2)}
+  .empty .big{font-family:var(--serif);font-size:26px;color:var(--muted);margin-bottom:10px}
+
+  /* ---------- modal ---------- */
+  .modal-bg{position:fixed;inset:0;z-index:90;background:rgba(8,6,4,.78);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:60px 20px;overflow-y:auto}
+  .modal-bg.show{display:flex;animation:fade .25s}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal{
+    background:linear-gradient(180deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line-2);border-radius:18px;max-width:720px;width:100%;
+    padding:38px;position:relative;animation:pop .3s cubic-bezier(.2,.8,.3,1);box-shadow:0 40px 100px -30px #000;
+  }
+  @keyframes pop{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
+  .modal-close{position:absolute;top:20px;right:22px;cursor:pointer;font-size:24px;color:var(--muted-2);background:none;border:none;transition:.2s;line-height:1}
+  .modal-close:hover{color:var(--gold-bright);transform:rotate(90deg)}
+  .modal .m-no{font-family:var(--mono);font-size:12px;color:var(--gold-deep);letter-spacing:1px}
+  .modal .m-badges{display:flex;gap:8px;margin:8px 0 14px}
+  .modal h2{font-family:var(--serif);font-weight:700;font-size:28px;line-height:1.25;margin-bottom:10px}
+  .modal .m-desc{color:var(--muted);font-size:15px;margin-bottom:22px}
+  .m-prompt-label{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+  .m-prompt-label::after{content:"";flex:1;height:1px;background:var(--line)}
+  .m-prompt{background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:22px;font-family:var(--mono);font-size:14px;line-height:1.85;color:var(--text);white-space:pre-wrap;max-height:340px;overflow-y:auto;margin-bottom:18px}
+  .m-tip{display:flex;gap:10px;align-items:flex-start;background:rgba(205,168,96,.07);border:1px solid var(--gold-deep);border-radius:10px;padding:13px 15px;margin-bottom:22px;font-size:13px;color:var(--muted)}
+  .m-tip b{color:var(--gold-bright);font-weight:500}
+  .m-actions{display:flex;gap:12px}
+  .m-actions .btn{padding:14px;font-size:15px}
+
+  /* toast */
+  .toast{position:fixed;bottom:34px;left:50%;transform:translateX(-50%) translateY(120px);z-index:120;background:var(--jade);color:#0f1a13;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;box-shadow:0 14px 40px rgba(0,0,0,.5);transition:transform .35s cubic-bezier(.2,.9,.3,1);display:flex;align-items:center;gap:8px}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--muted-2);font-size:13px}
+  footer .fbrand{font-family:var(--serif);color:var(--muted);font-size:16px;margin-bottom:8px}
+  footer a{color:var(--gold-deep);text-decoration:none}
+
+  @media(max-width:640px){
+    .wrap{padding:0 18px}
+    .grid{grid-template-columns:1fr}
+    .stats{gap:30px}
+    .modal{padding:26px 20px}
+    .filterbar{top:64px}
+    .hero{padding:48px 0 30px}
+  }
+</style>
+</head>
+<body>
+
+
+<div style="background:linear-gradient(135deg,#156fb0,#0b3a5e);color:#fff;text-align:center;padding:11px 16px;font-family:'Noto Sans SC',sans-serif;font-weight:700;font-size:14px">🚢 免费试用版(6条)· 完整 24 条跨境提示词 ¥49 <a href="../index.html" style="color:#ffce3a;text-decoration:underline">点此解锁 →</a></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <div class="mark">跨</div>
+      <div><b>跨境提示词库</b><span>CROSS-BORDER · AI</span></div>
+    </a>
+    <div class="top-actions">
+      <div class="fav-toggle" id="favToggle"><span class="star">★</span><span id="favCount">收藏 0</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">AI 变现实战工具库 · 2026</div>
+    <h1>跨境卖家的 AI 弹药库<br/>选品·Listing·广告 <span class="em">一键</span>搞定</h1>
+    <p class="lead">每一条都经过<b>结构化设计</b>,复制即用——把跨境运营里最费时的活(选品/listing/广告/客服),<b>交给 AI</b>。</p>
+    <p class="sub">覆盖 选品调研 · Listing文案与SEO · 广告与关键词 · 客服与差评 · 私域与复购 · 数据与运营</p>
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="搜索场景、平台或关键词,如:小红书、周报、卖点…" autocomplete="off" />
+      <kbd>/</kbd>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num" id="statTotal">—</div><div class="lab">实战提示词</div></div>
+      <div class="stat"><div class="num" id="statCat">—</div><div class="lab">应用分类</div></div>
+      <div class="stat"><div class="num" id="statFav">0</div><div class="lab">已收藏</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="filterbar">
+  <div class="wrap"><div class="pills" id="pills"></div></div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="result-meta" id="resultMeta"></div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" style="display:none">
+      <div class="big">没有找到匹配的提示词</div>
+      <div>换个关键词,或点上面的「全部」看看 👆</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">提示词金库 · PROMPT VAULT</div>
+    <div>把 AI 用出钱来 · 提示词持续更新 · 一次购买,长期受用</div>
+  </div>
+</footer>
+
+<!-- modal -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modal"></div>
+</div>
+
+<!-- toast -->
+<div class="toast" id="toast"><span>✓</span><span id="toastMsg">已复制到剪贴板</span></div>
+
+<!-- ===== 提示词数据(由 data/ 下的文件提供,可独立增删) ===== -->
+<script src="data/free.js"></script>
+
+<script>
+/* =====================================================================
+   配置区
+   ===================================================================== */
+// 演示锁:设为 true 时,PRO 提示词正文会被模糊并显示"解锁完整版"
+//   —— 用于做【免费引流/演示页】(放公网吸引用户,引导购买完整版)
+// 交付给【付费用户】的版本请保持 false(显示全部内容)。
+const DEMO_LOCK = false;
+
+// 兜底数据:万一 data/*.js 没加载,也保证页面不空白
+const FALLBACK = [
+  {id:"seed-1",cat:"内容创作",title:"小红书爆款标题生成器",desc:"把平淡主题改写成10条高点击标题",tags:["小红书","标题","流量"],pro:false,
+   prompt:"你是一位操盘过上百篇小红书爆款笔记的资深运营。\n\n请围绕主题【{填写你的主题}】生成10条爆款标题。\n要求:每条不超过20字、口语化、强情绪;覆盖数字型/痛点型/好奇型/结果承诺型钩子;每条最多2个emoji。\n\n输出表格:[序号|标题|钩子类型|吸引力(1-5星)]。"},
+  {id:"seed-2",cat:"职场效率",title:"10分钟搞定高质量周报",desc:"零散记录整理成有亮点的周报",tags:["周报","职场","效率"],pro:false,
+   prompt:"你是擅长向上管理的职场导师。把我这周零散的工作内容整理成结构清晰、突出价值的周报。\n\n我做的事:【{粗略罗列}】\n要求:按「核心成果/进行中/下周计划/需要支持」组织;成果尽量量化;语言专业。\n\n输出可直接复制的周报。"},
+  {id:"seed-3",cat:"营销获客",title:"私域破冰话术",desc:"陌生用户加微信后自然破冰",tags:["私域","话术","转化"],pro:true,
+   prompt:"你是精通私域成交的运营专家。有用户从【{来源}】加了我微信,我的产品是【{产品}】。\n请设计破冰话术:确认来意降戒备→开放式问题了解需求→给小价值建立信任→预告我能提供的帮助但不急推销。给3种风格各一套。"}
+];
+
+/* =====================================================================
+   应用逻辑
+   ===================================================================== */
+const DATA = (window.PROMPTS && window.PROMPTS.length) ? window.PROMPTS.slice() : FALLBACK.slice();
+const CAT_ORDER = ["选品调研","Listing文案与SEO","广告与关键词","客服与差评","私域与复购","数据与运营"];
+// 按分类顺序稳定排序并编号
+DATA.sort((a,b)=>{
+  const ai=CAT_ORDER.indexOf(a.cat), bi=CAT_ORDER.indexOf(b.cat);
+  return (ai<0?99:ai)-(bi<0?99:bi);
+});
+DATA.forEach((p,i)=>p._no = String(i+1).padStart(2,"0"));
+
+const FAV_KEY = "pv_favs_v1";
+let favs = new Set(JSON.parse(localStorage.getItem(FAV_KEY)||"[]"));
+let state = {q:"", cat:"全部", favOnly:false};
+
+const $ = s=>document.querySelector(s);
+const grid=$("#grid"), pillsEl=$("#pills"), emptyEl=$("#empty"), resultMeta=$("#resultMeta");
+
+function saveFavs(){localStorage.setItem(FAV_KEY,JSON.stringify([...favs]));}
+function catsInData(){return CAT_ORDER.filter(c=>DATA.some(p=>p.cat===c));}
+
+function buildPills(){
+  const cats=["全部",...catsInData()];
+  pillsEl.innerHTML = cats.map(c=>{
+    const n = c==="全部"?DATA.length:DATA.filter(p=>p.cat===c).length;
+    return `<div class="pill${state.cat===c?' active':''}" data-cat="${c}">${c}<span class="cnt">${n}</span></div>`;
+  }).join("");
+  pillsEl.querySelectorAll(".pill").forEach(el=>el.onclick=()=>{state.cat=el.dataset.cat;state.favOnly=false;updateFavToggle();render();});
+}
+
+function filtered(){
+  const q=state.q.trim().toLowerCase();
+  return DATA.filter(p=>{
+    if(state.favOnly && !favs.has(p.id)) return false;
+    if(state.cat!=="全部" && p.cat!==state.cat) return false;
+    if(q){
+      const hay=(p.title+p.desc+p.cat+(p.tags||[]).join("")+p.prompt).toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function cardHTML(p){
+  const locked = DEMO_LOCK && p.pro;
+  const isFav = favs.has(p.id);
+  return `<article class="card" data-id="${p.id}" style="animation-delay:${Math.random()*0.25}s">
+    <div class="card-top">
+      <span class="card-no">No.${p._no}</span>
+      <div class="card-badges">
+        ${p.pro?'<span class="pro-badge">PRO</span>':''}
+        <span class="cat-tag">${p.cat}</span>
+        <span class="fav-star${isFav?' on':''}" data-fav="${p.id}" title="收藏">${isFav?'★':'☆'}</span>
+      </div>
+    </div>
+    <h3>${esc(p.title)}</h3>
+    <div class="desc">${esc(p.desc||"")}</div>
+    <div class="prompt-prev${locked?' locked':''}">${esc(p.prompt)}${locked?'':''}</div>
+    ${locked?'<div class="lock-overlay"><span>🔒 解锁完整版查看</span><small>PRO 提示词</small></div>':''}
+    <div class="tags">${(p.tags||[]).slice(0,4).map(t=>`<span class="tag">#${esc(t)}</span>`).join("")}</div>
+    <div class="card-foot">
+      <button class="btn btn-primary" data-copy="${p.id}">📋 复制提示词</button>
+      <button class="btn btn-ghost" data-open="${p.id}" title="查看全文">⤢</button>
+    </div>
+  </article>`;
+}
+
+function render(){
+  const list=filtered();
+  buildPills();
+  resultMeta.textContent = `共 ${list.length} 条` + (state.cat!=="全部"?` · ${state.cat}`:"") + (state.favOnly?" · 我的收藏":"") + (state.q?` · 搜索"${state.q}"`:"");
+  if(!list.length){grid.innerHTML="";emptyEl.style.display="block";return;}
+  emptyEl.style.display="none";
+  grid.innerHTML=list.map(cardHTML).join("");
+  // bind
+  grid.querySelectorAll(".card").forEach(c=>{
+    c.onclick=e=>{
+      if(e.target.closest("[data-copy]")||e.target.closest("[data-fav]")) return;
+      openModal(c.dataset.id);
+    };
+  });
+  grid.querySelectorAll("[data-copy]").forEach(b=>b.onclick=e=>{e.stopPropagation();copyPrompt(b.dataset.copy,b);});
+  grid.querySelectorAll("[data-fav]").forEach(s=>s.onclick=e=>{e.stopPropagation();toggleFav(s.dataset.fav);});
+  grid.querySelectorAll("[data-open]").forEach(b=>b.onclick=e=>{e.stopPropagation();openModal(b.dataset.open);});
+}
+
+function copyPrompt(id,btn){
+  const p=DATA.find(x=>x.id===id);if(!p)return;
+  if(DEMO_LOCK && p.pro){toast("🔒 这是 PRO 提示词,请解锁完整版");return;}
+  navigator.clipboard.writeText(p.prompt).then(()=>{
+    if(btn){const t=btn.innerHTML;btn.innerHTML="✓ 已复制";btn.classList.add("copied");setTimeout(()=>{btn.innerHTML=t;btn.classList.remove("copied");},1500);}
+    toast("已复制,去 AI 里粘贴吧 ✦");
+  }).catch(()=>toast("复制失败,请手动选择"));
+}
+
+function toggleFav(id){
+  if(favs.has(id))favs.delete(id);else favs.add(id);
+  saveFavs();updateFavToggle();render();
+}
+function updateFavToggle(){
+  $("#favCount").textContent="收藏 "+favs.size;
+  $("#statFav").textContent=favs.size;
+  $("#favToggle").classList.toggle("on",state.favOnly);
+}
+
+function openModal(id){
+  const p=DATA.find(x=>x.id===id);if(!p)return;
+  const locked=DEMO_LOCK && p.pro;
+  const isFav=favs.has(p.id);
+  $("#modal").innerHTML=`
+    <button class="modal-close" id="mClose">×</button>
+    <div class="m-no">No.${p._no}</div>
+    <div class="m-badges">${p.pro?'<span class="pro-badge">PRO</span>':''}<span class="cat-tag">${p.cat}</span></div>
+    <h2>${esc(p.title)}</h2>
+    <div class="m-desc">${esc(p.desc||"")}</div>
+    <div class="m-prompt-label">提示词正文</div>
+    ${locked
+      ? `<div class="m-prompt" style="filter:blur(6px)">${esc(p.prompt)}</div><div class="m-tip"><b>🔒 这是 PRO 提示词</b>&nbsp;解锁完整版即可查看并复制全部 ${DATA.length} 条。</div>`
+      : `<div class="m-prompt" id="mPrompt">${esc(p.prompt)}</div>
+         <div class="m-tip"><span>💡</span><div>把正文里 <b>【{ }】</b> 中的内容换成你自己的信息,再发给 ChatGPT / Claude / DeepSeek / 豆包 等任意 AI 即可。</div></div>`}
+    <div class="m-actions">
+      <button class="btn btn-primary" id="mCopy">📋 复制完整提示词</button>
+      <button class="btn btn-ghost" id="mFav" style="width:auto;padding:14px 20px">${isFav?'★ 已收藏':'☆ 收藏'}</button>
+    </div>`;
+  $("#modalBg").classList.add("show");
+  document.body.style.overflow="hidden";
+  $("#mClose").onclick=closeModal;
+  $("#mCopy").onclick=()=>copyPrompt(p.id,$("#mCopy"));
+  $("#mFav").onclick=()=>{toggleFav(p.id);openModal(p.id);};
+}
+function closeModal(){$("#modalBg").classList.remove("show");document.body.style.overflow="";}
+$("#modalBg").onclick=e=>{if(e.target.id==="modalBg")closeModal();};
+
+let toastTimer;
+function toast(msg){
+  $("#toastMsg").textContent=msg;
+  const t=$("#toast");t.classList.add("show");
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
+}
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+// search
+$("#search").addEventListener("input",e=>{state.q=e.target.value;render();});
+// fav toggle
+$("#favToggle").onclick=()=>{state.favOnly=!state.favOnly;if(state.favOnly)state.cat="全部";updateFavToggle();render();};
+// keyboard
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")closeModal();
+  if(e.key==="/" && document.activeElement.tagName!=="INPUT"){e.preventDefault();$("#search").focus();}
+});
+
+// init
+$("#statTotal").textContent=DATA.length;
+$("#statCat").textContent=catsInData().length;
+updateFavToggle();
+render();
+</script>
+</body>
+</html>
