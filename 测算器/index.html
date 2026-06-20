@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>变现飞轮测算器 · 算清你的产品矩阵能赚多少</title>
+<meta name="description" content="输入流量与转化率,实时算出产品矩阵各层级收入、用户LTV与年化预估。" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="变现飞轮测算器 · 算清你的产品矩阵能赚多少" />
+<meta property="og:description" content="输入流量与转化率,实时算出钩子→破冰→利润→后端各层收入、用户LTV与年化。" />
+<meta property="og:image" content="og-cover.png" />
+<meta name="theme-color" content="#0f1419" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f1419'/%3E%3Ctext x='50' y='72' font-size='56' text-anchor='middle' fill='%2322d3ee' font-family='sans-serif' font-weight='bold'%3E%C2%A5%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0e131a; --bg2:#0b1016; --surface:#161f2b; --surface-2:#1d2937; --line:#26303d; --line-2:#33414f;
+    --text:#e8eef5; --muted:#93a4b6; --muted-2:#5f7286;
+    --cyan:#22d3ee; --lime:#a3e635; --amber:#fbbf24; --violet:#a78bfa; --rose:#fb7185;
+    --disp:"Sora","Noto Sans SC",sans-serif;
+    --sans:"Noto Sans SC",-apple-system,"PingFang SC",sans-serif;
+    --mono:"IBM Plex Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+  body{background-image:radial-gradient(900px 500px at 80% -10%,rgba(34,211,238,.08),transparent),radial-gradient(700px 500px at 10% 110%,rgba(163,230,53,.06),transparent)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  a{color:var(--cyan)}
+
+  header{padding:30px 0 10px}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand .logo{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--cyan),#0891b2);display:grid;place-items:center;color:#06222a;font-family:var(--disp);font-weight:800;font-size:22px;box-shadow:0 6px 22px rgba(34,211,238,.3)}
+  .brand b{font-family:var(--disp);font-weight:800;font-size:21px;letter-spacing:-.3px;display:block;line-height:1.1}
+  .brand span{font-family:var(--mono);font-size:11px;color:var(--muted-2);letter-spacing:1px}
+  .intro{margin:22px 0 26px;color:var(--muted);max-width:760px;font-size:15px}
+  .intro b{color:var(--lime)}
+
+  .grid{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:24px;align-items:start;padding-bottom:60px}
+  @media(max-width:880px){.grid{grid-template-columns:1fr}}
+
+  .panel{background:linear-gradient(180deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:18px;padding:24px}
+  .panel h2{font-family:var(--disp);font-weight:700;font-size:16px;letter-spacing:.3px;margin-bottom:4px;display:flex;align-items:center;gap:9px}
+  .panel h2 .tag{font-family:var(--mono);font-size:10px;color:var(--bg);background:var(--cyan);padding:2px 7px;border-radius:5px;font-weight:600}
+  .panel .desc{color:var(--muted-2);font-size:12.5px;margin-bottom:20px}
+
+  .presets{display:flex;gap:8px;margin-bottom:22px}
+  .preset{flex:1;cursor:pointer;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--muted);background:var(--surface-2);border:1px solid var(--line-2);padding:8px;border-radius:9px;transition:.15s;text-align:center}
+  .preset:hover{color:var(--text);border-color:var(--cyan)}
+  .preset.on{background:rgba(34,211,238,.12);color:var(--cyan);border-color:var(--cyan)}
+
+  .ctrl{margin-bottom:20px}
+  .ctrl .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+  .ctrl label{font-size:13.5px;color:var(--text);font-weight:500}
+  .ctrl label small{display:block;color:var(--muted-2);font-size:11px;font-weight:400}
+  .ctrl .val{font-family:var(--mono);font-size:15px;color:var(--cyan);font-weight:600;white-space:nowrap}
+  .ctrl .val.price{color:var(--lime)}
+  input[type=range]{-webkit-appearance:none;width:100%;height:6px;border-radius:99px;background:var(--surface-2);outline:none;cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--cyan);border:3px solid var(--bg2);box-shadow:0 0 0 1px var(--cyan);cursor:pointer;transition:.1s}
+  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+  input[type=range].price::-webkit-slider-thumb{background:var(--lime);box-shadow:0 0 0 1px var(--lime)}
+  .divider{height:1px;background:var(--line);margin:22px 0}
+  .sec-label{font-family:var(--mono);font-size:11px;color:var(--muted-2);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+
+  /* results */
+  .headline{background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(163,230,53,.08));border:1px solid var(--line-2);border-radius:18px;padding:26px 28px;margin-bottom:20px;position:relative;overflow:hidden}
+  .headline .lab{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:1px;margin-bottom:6px}
+  .headline .big{font-family:var(--disp);font-weight:800;font-size:clamp(34px,6vw,52px);line-height:1;background:linear-gradient(120deg,var(--cyan),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .headline .sub{margin-top:10px;display:flex;gap:26px;flex-wrap:wrap}
+  .headline .sub div{font-size:12.5px;color:var(--muted)}
+  .headline .sub b{display:block;font-family:var(--mono);font-size:19px;color:var(--text);font-weight:600;margin-top:2px}
+
+  .funnel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:20px}
+  .funnel h3{font-family:var(--disp);font-weight:700;font-size:15px;margin-bottom:18px}
+  .stage{margin-bottom:14px}
+  .stage:last-child{margin-bottom:0}
+  .stage .row1{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:13px}
+  .stage .nm{display:flex;align-items:center;gap:8px;color:var(--text);font-weight:500}
+  .stage .dot{width:9px;height:9px;border-radius:50%}
+  .stage .cnt{font-family:var(--mono);color:var(--muted)}
+  .bar-track{height:30px;background:var(--bg2);border-radius:8px;overflow:hidden;position:relative;border:1px solid var(--line)}
+  .bar-fill{height:100%;border-radius:7px;display:flex;align-items:center;padding:0 12px;transition:width .5s cubic-bezier(.2,.8,.3,1);min-width:64px}
+  .bar-fill .rev{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--bg);white-space:nowrap}
+
+  .table{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:8px 22px 14px}
+  .table table{width:100%;border-collapse:collapse;font-size:13px}
+  .table th{text-align:right;font-family:var(--mono);font-size:10.5px;color:var(--muted-2);letter-spacing:1px;text-transform:uppercase;padding:14px 8px 10px;border-bottom:1px solid var(--line);font-weight:500}
+  .table th:first-child,.table td:first-child{text-align:left}
+  .table td{padding:11px 8px;border-bottom:1px solid var(--line);font-family:var(--mono)}
+  .table tr:last-child td{border-bottom:none}
+  .table .nm{font-family:var(--sans);color:var(--text)}
+  .table .pct{color:var(--muted)}
+  .table tfoot td{border-top:2px solid var(--line-2);border-bottom:none;font-weight:600;color:var(--lime);padding-top:13px}
+
+  .target{background:linear-gradient(135deg,rgba(163,230,53,.1),rgba(34,211,238,.06));border:1px solid var(--line-2);border-radius:16px;padding:22px;margin-bottom:20px}
+  .target h3{font-family:var(--disp);font-weight:700;font-size:15px;margin-bottom:14px}
+  .t-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  .t-row label{font-size:14px;color:var(--text);font-weight:500}
+  .t-input{display:flex;align-items:center;gap:4px;color:var(--lime);background:var(--bg2);border:1px solid var(--line-2);border-radius:9px;padding:5px 12px}
+  .t-input input{width:120px;background:none;border:none;color:var(--lime);font-family:var(--mono);font-size:18px;font-weight:600;outline:none}
+  .t-out{font-size:13.5px;color:var(--muted);line-height:1.95}
+  .t-out b{color:var(--text);font-family:var(--mono)}
+  .note{font-size:12px;color:var(--muted-2);margin-top:16px;line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .note b{color:var(--muted)}
+  footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted-2);font-size:12.5px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand"><div class="logo">¥</div><div><b>变现飞轮测算器</b><span>FLYWHEEL REVENUE CALCULATOR</span></div></div>
+  <p class="intro">别凭感觉做生意。拖动下面的滑块,实时算出你的<b>产品矩阵(钩子→破冰→利润→后端)</b>每个月能产生多少收入、每个私域用户值多少钱(LTV)。看懂这套单位经济学,你才知道该把劲儿使在哪。</p>
+</div></header>
+
+<div class="wrap grid">
+  <!-- INPUTS -->
+  <div class="panel">
+    <h2><span class="tag">输入</span>你的漏斗参数</h2>
+    <div class="desc">不知道填多少?先点一个预设,再按自己情况微调。</div>
+    <div class="presets" id="presets">
+      <div class="preset" data-p="conservative">保守</div>
+      <div class="preset on" data-p="standard">标准</div>
+      <div class="preset" data-p="aggressive">理想</div>
+    </div>
+
+    <div class="sec-label">① 流量 → 私域</div>
+    <div class="ctrl"><div class="top"><label>月公域触达 <small>内容被多少人看到</small></label><span class="val" id="v_reach"></span></div><input type="range" id="reach" min="2000" max="500000" step="1000"></div>
+    <div class="ctrl"><div class="top"><label>加私域转化率 <small>看到的人里,多少加你微信/进私域</small></label><span class="val" id="v_capture"></span></div><input type="range" id="capture" min="0.2" max="20" step="0.1"></div>
+
+    <div class="divider"></div>
+    <div class="sec-label">② 私域 → 各价格带成交</div>
+    <div class="ctrl"><div class="top"><label>破冰品 转化率 <small>私域用户里多少买破冰品</small></label><span class="val" id="v_br"></span></div><input type="range" id="br" min="0.5" max="40" step="0.5"></div>
+    <div class="ctrl"><div class="top"><label>破冰品 客单价</label><span class="val price" id="v_bp"></span></div><input type="range" class="price" id="bp" min="9" max="399" step="10"></div>
+    <div class="ctrl"><div class="top"><label>利润品 转化率 <small>破冰买家里多少升级到利润品</small></label><span class="val" id="v_pr"></span></div><input type="range" id="pr" min="1" max="50" step="1"></div>
+    <div class="ctrl"><div class="top"><label>利润品 客单价</label><span class="val price" id="v_pp"></span></div><input type="range" class="price" id="pp" min="199" max="2999" step="50"></div>
+    <div class="ctrl"><div class="top"><label>后端 转化率 <small>利润买家里多少买高客单后端</small></label><span class="val" id="v_kr"></span></div><input type="range" id="kr" min="0" max="40" step="1"></div>
+    <div class="ctrl"><div class="top"><label>后端 客单价 <small>1对1/定制/企业内训</small></label><span class="val price" id="v_kp"></span></div><input type="range" class="price" id="kp" min="0" max="20000" step="500"></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div>
+    <div class="headline">
+      <div class="lab">预估月收入(单月新增这批用户带来的)</div>
+      <div class="big" id="out_total">¥0</div>
+      <div class="sub">
+        <div>年化预估<b id="out_year">¥0</b></div>
+        <div>每个私域用户价值 LTV<b id="out_ltv">¥0</b></div>
+        <div>本月新增私域<b id="out_fans">0</b></div>
+        <div>全矩阵 vs 只卖破冰品<b id="out_gain" style="color:var(--lime)">+0%</b></div>
+      </div>
+    </div>
+
+    <div class="funnel">
+      <h3>漏斗与各层收入</h3>
+      <div id="stages"></div>
+    </div>
+
+    <div class="table">
+      <table>
+        <thead><tr><th>价格带</th><th>转化</th><th>人数</th><th>客单</th><th>月收入</th></tr></thead>
+        <tbody id="tbody"></tbody>
+        <tfoot><tr><td>合计</td><td></td><td></td><td></td><td id="tfoot_total">¥0</td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="target">
+      <h3>🎯 目标倒推 · 想赚多少 → 需要多少流量</h3>
+      <div class="t-row"><label>我的目标月收入</label><div class="t-input">¥<input type="number" id="target" value="30000" min="0" step="1000" /></div></div>
+      <div class="t-out" id="targetOut"></div>
+    </div>
+
+    <div class="note">
+      <b>怎么读这张表:</b> 收入主要来自哪一档?如果几乎全靠"破冰品",说明你<b>缺利润品和后端</b>——加一个高客单产品,总收入可能翻几倍。如果"加私域转化率"一动总收入就剧烈变化,说明<b>私域是你的命脉</b>,该把劲儿使在引流和留资上。这正是 <b>LTV > 单次客单</b> 的意义:同一个私域用户,被矩阵反复变现。<br/>
+      ⚠️ 本测算是"输入假设 → 数学推演",帮你理解模型与设定目标,<b>不是收益承诺</b>,实际结果取决于你的执行。
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap">变现飞轮测算器 · 看懂单位经济学,是把副业做成生意的第一道认知差</div></footer>
+
+<script>
+const PRESETS = {
+  conservative:{reach:15000,capture:1.5,br:4,bp:99,pr:8,pp:499,kr:5,kp:3000},
+  standard:    {reach:30000,capture:3,  br:8,bp:99,pr:15,pp:499,kr:10,kp:3000},
+  aggressive:  {reach:80000,capture:6,  br:12,bp:129,pr:22,pp:699,kr:15,kp:5000}
+};
+const IDS=["reach","capture","br","bp","pr","pp","kr","kp"];
+const $=id=>document.getElementById(id);
+function money(n){return "¥"+Math.round(n).toLocaleString();}
+function intc(n){return Math.round(n).toLocaleString();}
+
+const STAGES=[
+  {key:"break",  nm:"破冰品",  color:"#22d3ee", rate:"br", price:"bp"},
+  {key:"profit", nm:"利润品",  color:"#a3e635", rate:"pr", price:"pp"},
+  {key:"backend",nm:"后端",    color:"#fbbf24", rate:"kr", price:"kp"}
+];
+
+function setPreset(name){
+  const p=PRESETS[name]; IDS.forEach(k=>$(k).value=p[k]);
+  document.querySelectorAll(".preset").forEach(el=>el.classList.toggle("on",el.dataset.p===name));
+  calc();
+}
+
+function calc(){
+  const g=k=>parseFloat($(k).value);
+  const reach=g("reach"), capture=g("capture"), br=g("br"), bp=g("bp"), pr=g("pr"), pp=g("pp"), kr=g("kr"), kp=g("kp");
+  // value labels
+  $("v_reach").textContent=intc(reach)+" 人";
+  $("v_capture").textContent=capture.toFixed(1)+" %";
+  $("v_br").textContent=br.toFixed(1)+" %"; $("v_bp").textContent=money(bp);
+  $("v_pr").textContent=pr+" %"; $("v_pp").textContent=money(pp);
+  $("v_kr").textContent=kr+" %"; $("v_kp").textContent=money(kp);
+
+  const fans=reach*capture/100;
+  const nBreak=fans*br/100, nProfit=nBreak*pr/100, nBackend=nProfit*kr/100;
+  const rBreak=nBreak*bp, rProfit=nProfit*pp, rBackend=nBackend*kp;
+  const total=rBreak+rProfit+rBackend;
+  const counts={break:nBreak,profit:nProfit,backend:nBackend};
+  const revs={break:rBreak,profit:rProfit,backend:rBackend};
+  const prices={break:bp,profit:pp,backend:kp};
+  const rates={break:br,profit:pr,backend:kr};
+
+  $("out_total").textContent=money(total);
+  $("out_year").textContent=money(total*12);
+  $("out_ltv").textContent=fans>0?money(total/fans):"¥0";
+  $("out_fans").textContent=intc(fans);
+  const gain=rBreak>0?(total-rBreak)/rBreak*100:0;
+  $("out_gain").textContent="+"+Math.round(gain)+"%";
+  // 目标倒推
+  const target=parseFloat($("target").value)||0;
+  const ltv=fans>0?total/fans:0;
+  if(ltv>0&&target>0){
+    const needFans=target/ltv, needReach=capture>0?needFans/(capture/100):0, needBreak=needFans*br/100;
+    $("targetOut").innerHTML=`按你<b style="color:var(--cyan)">当前这套转化率</b>,要做到 <b style="color:var(--lime)">${money(target)}/月</b>,你需要:<br>· 每月公域触达约 <b>${intc(needReach)}</b> 人<br>· 每月新增私域约 <b>${intc(needFans)}</b> 人<br>· 其中卖出约 <b>${intc(needBreak)}</b> 单破冰品(及对应利润品/后端)<br><span style="color:var(--muted-2)">想降低难度?提高转化率或客单价,需要的流量会大幅下降。</span>`;
+  }else{$("targetOut").textContent="填一个目标月收入,看看按当前转化率需要多少流量。";}
+
+  // funnel stages (bar width relative to fans, min for visibility)
+  const maxRev=Math.max(rBreak,rProfit,rBackend,1);
+  let sHTML=`<div class="stage"><div class="row1"><div class="nm"><span class="dot" style="background:#5f7286"></span>本月新增私域用户</div><div class="cnt">${intc(fans)} 人</div></div>
+    <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#33414f,#26303d)"><span class="rev" style="color:#93a4b6">入口流量池</span></div></div></div>`;
+  STAGES.forEach(s=>{
+    const w=Math.max(8, revs[s.key]/maxRev*100);
+    sHTML+=`<div class="stage"><div class="row1"><div class="nm"><span class="dot" style="background:${s.color}"></span>${s.nm} · ${rates[s.key]}%转化</div><div class="cnt">${intc(counts[s.key])} 单 × ${money(prices[s.key])}</div></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${w}%;background:linear-gradient(90deg,${s.color},${s.color}bb)"><span class="rev">${money(revs[s.key])}/月</span></div></div></div>`;
+  });
+  $("stages").innerHTML=sHTML;
+
+  // table
+  const rows=[
+    ["破冰品",br+"%",nBreak,bp,rBreak],
+    ["利润品",pr+"%",nProfit,pp,rProfit],
+    ["后端",kr+"%",nBackend,kp,rBackend]
+  ];
+  $("tbody").innerHTML=rows.map(r=>`<tr><td class="nm">${r[0]}</td><td class="pct">${r[1]}</td><td>${intc(r[2])}</td><td>${money(r[3])}</td><td style="color:var(--text)">${money(r[4])}</td></tr>`).join("");
+  $("tfoot_total").textContent=money(total);
+}
+
+IDS.forEach(k=>$(k).addEventListener("input",()=>{document.querySelectorAll(".preset").forEach(el=>el.classList.remove("on"));calc();}));
+document.querySelectorAll(".preset").forEach(el=>el.onclick=()=>setPreset(el.dataset.p));
+$("target").addEventListener("input",calc);
+setPreset("standard");
+</script>
+</body>
+</html>
