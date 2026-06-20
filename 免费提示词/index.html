@@ -457,7 +457,8 @@ function openModal(id){
     <div class="m-actions">
       <button class="btn btn-primary" id="mCopy">📋 复制完整提示词</button>
       <button class="btn btn-ghost" id="mFav" style="width:auto;padding:14px 20px">${isFav?'★ 已收藏':'☆ 收藏'}</button>
-    </div>`;
+    </div>
+    ${locked?'':`<a href="../index.html" style="display:block;text-align:center;margin-top:15px;padding-top:15px;border-top:1px solid rgba(205,168,96,.22);color:#e8c97a;font-weight:700;font-size:13.5px;text-decoration:none">✨ 喜欢就别错过 —— 完整版 40 条跨境提示词,¥49 解锁全部 →</a>`}`;
   $("#modalBg").classList.add("show");
   document.body.style.overflow="hidden";
   $("#mClose").onclick=closeModal;
