@@ -286,6 +286,12 @@
       <div class="big">没有找到匹配的提示词</div>
       <div>换个关键词,或点上面的「全部」看看 👆</div>
     </div>
+    <div id="endCTA" style="display:none;margin:34px 0 6px;background:linear-gradient(135deg,#201a10,#2c2215);border:1px solid #cda860;border-radius:20px;padding:32px 26px;text-align:center;box-shadow:0 24px 60px -28px rgba(205,168,96,.5)">
+      <div style="font-family:'Noto Serif SC','Noto Sans SC',serif;font-weight:900;font-size:23px;color:#f3e9d2;margin-bottom:9px">这 6 条,只是开胃菜 🍽️</div>
+      <div style="color:#bcab8c;font-size:14.5px;max-width:540px;margin:0 auto 20px;line-height:1.8">完整版 <b style="color:#e8c97a">40 条</b>——多出的 34 条覆盖选品调研 / Listing & SEO / 广告与关键词 / 客服与差评 / 私域与复购 / 数据与运营 <b style="color:#e8c97a">6 大跨境场景</b>,写 Listing 出地道英文、回差评有现成话术、广告报告 AI 帮你解读。</div>
+      <a href="../index.html" style="display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#e8c97a,#cda860);color:#1a140b;font-weight:800;font-size:17px;padding:15px 36px;border-radius:999px;text-decoration:none;box-shadow:0 14px 32px -10px rgba(205,168,96,.7)">🔓 ¥49 解锁完整 40 条 →</a>
+      <div style="color:#8a7c5f;font-size:12.5px;margin-top:13px">一次拥有 · 持续更新 · 早鸟价(原价 ¥99)</div>
+    </div>
   </div>
 </main>
 
@@ -398,9 +404,10 @@ function render(){
   const list=filtered();
   buildPills();
   resultMeta.textContent = `共 ${list.length} 条` + (state.cat!=="全部"?` · ${state.cat}`:"") + (state.favOnly?" · 我的收藏":"") + (state.q?` · 搜索"${state.q}"`:"");
-  if(!list.length){grid.innerHTML="";emptyEl.style.display="block";return;}
+  if(!list.length){grid.innerHTML="";emptyEl.style.display="block";$("#endCTA").style.display="none";return;}
   emptyEl.style.display="none";
   grid.innerHTML=list.map(cardHTML).join("");
+  $("#endCTA").style.display="block";
   // bind
   grid.querySelectorAll(".card").forEach(c=>{
     c.onclick=e=>{
@@ -484,6 +491,13 @@ $("#statTotal").textContent=DATA.length;
 $("#statCat").textContent=catsInData().length;
 updateFavToggle();
 render();
+(function(){
+  const fc=$("#floatCTA"),ec=$("#endCTA");let endVisible=false;
+  function upd(){const show=window.scrollY>460&&!endVisible;fc.style.transform="translateX(-50%) translateY("+(show?"0":"140px")+")";}
+  if("IntersectionObserver" in window){new IntersectionObserver(es=>{es.forEach(e=>endVisible=e.isIntersecting);upd();}).observe(ec);}
+  window.addEventListener("scroll",upd,{passive:true});
+})();
 </script>
+<a id="floatCTA" href="../index.html" style="position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(140px);z-index:55;background:linear-gradient(135deg,#e8c97a,#cda860);color:#1a140b;font-weight:800;font-size:15px;padding:13px 26px;border-radius:999px;text-decoration:none;box-shadow:0 14px 34px -8px rgba(205,168,96,.65);transition:transform .35s cubic-bezier(.2,.8,.2,1);white-space:nowrap">🔓 解锁完整 40 条 · ¥49</a>
 </body>
 </html>
