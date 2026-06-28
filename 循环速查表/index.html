@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>跨境 AI 循环速查表(免费)· 别再一句句问 AI,搭会自己跑的循环｜2026</title>
+<meta name="description" content="跨境卖家专用:提示词已过时,2026 是 Loop(循环)。一页看懂 4 种循环、跨境哪个活该搭哪种循环用什么工具、3 个复制即跑的跨境循环模板(选品/Listing/差评)。真 AI 工程师整理,免费可打印。" />
+<meta name="keywords" content="跨境AI循环,loop engineering,跨境自动化,亚马逊AI,扣子,Dify,AI agent,选品循环,listing自动化" />
+<link rel="canonical" href="https://chriswu0318.github.io/cross-border-prompts/循环速查表/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="跨境 AI 循环速查表(免费)· 别再一句句问 AI" />
+<meta property="og:description" content="跨境卖家:提示词过时了,2026 是 Loop。4 种循环 + 跨境循环地图 + 3 个复制即跑模板。真 AI 工程师整理。" />
+<meta property="og:image" content="https://chriswu0318.github.io/cross-border-prompts/og-loop.png" />
+<meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="跨境 AI 循环速查表 · 别再一句句问 AI,搭会自己跑的循环"/>
+<meta property="og:url" content="https://chriswu0318.github.io/cross-border-prompts/循环速查表/" />
+<meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="https://chriswu0318.github.io/cross-border-prompts/og-loop.png" />
+<meta name="theme-color" content="#0b3a5e" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23156fb0'/%3E%3Ctext x='50' y='74' font-size='56' text-anchor='middle' fill='%23fff' font-family='sans-serif' font-weight='bold'%3E↻%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#eef3f7;--surface:#fff;--tint:#e6f0f8;--ink:#0f2233;--soft:#4d6175;--faint:#8499a9;--blue:#156fb0;--blue-d:#0f5688;--blue-deep:#0b3a5e;--gold:#e0a93b;--violet:#7c54c8;--rose:#d8584a;--line:#dde8f0;--disp:"Plus Jakarta Sans","Noto Sans SC",sans-serif;--sans:"Noto Sans SC",-apple-system,"PingFang SC",sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;padding:24px 16px 60px}
+  .sheet{max-width:920px;margin:0 auto}
+  .head{background:linear-gradient(135deg,var(--blue-deep),#0d4f7d);color:#fff;border-radius:20px;padding:30px 30px 26px;text-align:center;margin-bottom:18px}
+  .head .tag{display:inline-block;background:var(--gold);color:#2a1f06;font-weight:800;font-size:12px;padding:4px 13px;border-radius:999px;margin-bottom:12px}
+  .head h1{font-family:var(--disp);font-weight:800;font-size:clamp(23px,4.5vw,31px);line-height:1.2;margin-bottom:8px}
+  .head h1 .lp{color:var(--gold)}
+  .head p{color:#bcd9ef;font-size:14.5px;max-width:600px;margin:0 auto}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:720px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .card.full{grid-column:1/-1}
+  .card h2{font-family:var(--disp);font-weight:800;font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+  .card h2 .ic{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-size:15px;flex:none;color:#fff}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .vs .col{border-radius:12px;padding:14px}
+  .vs .old{background:#faf0ef;border:1px solid #f0d9d6}.vs .new{background:var(--tint);border:1px solid #cbe0f1}
+  .vs .lab{font-weight:800;font-size:13px;margin-bottom:8px}.vs .old .lab{color:var(--rose)}.vs .new .lab{color:var(--blue-d)}
+  .vs p{font-size:12px;color:var(--soft);margin-bottom:7px}.vs p:last-child{margin-bottom:0}
+  .row{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.row:last-child{border:none}
+  .row .k{font-weight:700;color:var(--blue-deep);flex:none;width:150px}
+  .row .v{color:var(--soft)}
+  ul.clean{list-style:none}ul.clean li{padding:8px 0;border-bottom:1px dashed var(--line);font-size:13.5px;color:var(--soft);display:flex;gap:9px}ul.clean li:last-child{border:none}
+  ul.clean li b{color:var(--ink)}
+  .num{flex:none;width:22px;height:22px;border-radius:7px;background:var(--tint);color:var(--blue-d);display:grid;place-items:center;font-size:12px;font-weight:800}
+  .tpl{background:#f7fafd;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:12.5px;color:var(--ink);margin:8px 0;line-height:1.65}
+  .tpl b{color:var(--blue-deep);font-size:13.5px}
+  .tpl .meta{color:var(--faint);font-size:11.5px}.tpl .step{color:var(--soft)}
+  .bad{color:var(--rose);font-weight:700}
+  .cta{background:linear-gradient(160deg,var(--blue-deep),#0d4f7d);border-radius:20px;padding:32px 26px;color:#fff;text-align:center;margin-top:18px}
+  .cta h2{font-family:var(--disp);font-weight:800;font-size:21px;margin-bottom:8px}
+  .cta p{color:#bcd9ef;font-size:14px;max-width:520px;margin:0 auto 18px}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cta-row a{font-weight:800;font-size:15px;padding:13px 26px;border-radius:999px;text-decoration:none}
+  .cta-row .primary{background:var(--gold);color:var(--blue-deep)}
+  .cta-row .ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
+  .foot{text-align:center;margin-top:18px;color:var(--faint);font-size:12.5px;line-height:1.8}.foot a{color:var(--blue-d);font-weight:700;text-decoration:none}
+  @media print{body{background:#fff;padding:0}.head{border-radius:0}.cta{display:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AI 跨境提示词库","item":"https://chriswu0318.github.io/cross-border-prompts/"},{"@type":"ListItem","position":2,"name":"跨境 AI 循环速查表","item":"https://chriswu0318.github.io/cross-border-prompts/%E5%BE%AA%E7%8E%AF%E9%80%9F%E6%9F%A5%E8%A1%A8/"}]}
+</script>
+</head>
+<body>
+<div class="sheet">
+  <div class="head">
+    <span class="tag">🆓 免费 · 跨境卖家专用 · 2026 新范式</span>
+    <h1>跨境 AI <span class="lp">循环</span>速查表 · Loop</h1>
+    <p>提示词已经过时了。选品、Listing、差评、竞品监控——别再一句句问 AI,<b style="color:#fff">搭一个会自己跑的循环</b>,让它替你循环干活。一页看懂怎么搭。</p>
+  </div>
+
+  <div class="grid">
+    <div class="card full">
+      <h2><span class="ic" style="background:var(--violet)">🔄</span>认知升级:从"问一句"到"搭循环"</h2>
+      <div class="vs">
+        <div class="col old">
+          <div class="lab">❌ 旧:提示词(一次性提问)</div>
+          <p>每天人肉开 ChatGPT,一条 listing 一条地手敲"帮我写标题/五点"——人停活停</p>
+          <p>选品靠手感:自己刷类目、复制竞品、问一句,问完就忘,下次重头刷</p>
+          <p>回差评全靠你盯后台,半夜来的得等你睡醒,提示词再好也得你亲自喂</p>
+        </div>
+        <div class="col new">
+          <div class="lab">✅ 新:循环(会自己跑的系统)</div>
+          <p>搭一条选品→出 listing 流水线:丢一个 SKU 进去,AI 自己查、自己写、自己自检合规</p>
+          <p>选品做成"触发+干活"循环:给类目自动整理候选→打分排序→输出可决策清单</p>
+          <p>配"质检员+回复草稿"循环:新差评自动起草合规回复待你一键确认,不再压到深夜</p>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--faint);margin-top:10px">※ "Loop Engineering(循环工程)"是 2026 新范式——重点从"你怎么问 AI"变成"你怎么设计一个会自己跑的循环"。</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="ic" style="background:var(--blue)">🧩</span>4 种循环(讲人话)</h2>
+      <ul class="clean">
+        <li><span class="num">1</span><div><b>干活循环</b>:把"选品→写 listing→配关键词→合规自检"串成流水线,AI 自己做完,你收成品</div></li>
+        <li><span class="num">2</span><div><b>检查循环</b>:给 listing/广告/客服配"质检员",不合规自动打回重写,少踩平台规则坑</div></li>
+        <li><span class="num">3</span><div><b>触发循环</b>:到点/来消息自动启动——每天跑竞品价格/库存监控,新差评一来自动起草回复</div></li>
+        <li><span class="num">4</span><div><b>进化循环</b>:把"哪条 listing 转化高"的结果喂回,让它越跑越贴你这盘货</div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><span class="ic" style="background:var(--rose)">🚫</span>搭循环避坑(跨境)</h2>
+      <ul class="clean">
+        <li><span class="num">✕</span><div><span class="bad">以为一键躺赚</span>:循环要搭、要喂数据、偶尔维护,不是开了就躺赚</div></li>
+        <li><span class="num">✕</span><div><span class="bad">违规抓数据</span>:评论/竞品数据走<b>官方 API / 平台允许的公开页 / 你自己后台导出</b>,绝不破解登录或抓非公开数据</div></li>
+        <li><span class="num">✕</span><div><span class="bad">让 AI 自动直发</span>:差评回复、客服答复一律先出草稿,你审过再发</div></li>
+        <li><span class="num">✕</span><div><span class="bad">一上来搭超复杂的</span>:先搭一个最小的能跑起来,再加检查和进化</div></li>
+      </ul>
+    </div>
+
+    <div class="card full">
+      <h2><span class="ic" style="background:var(--blue)">🗺️</span>跨境循环地图:哪个活搭哪种循环、用什么工具</h2>
+      <div class="row"><span class="k">新品 Listing 撰写</span><span class="v">干活+检查循环 · <b>扣子/Dify</b>:写作Agent→合规质检Agent,质检不过自动回炉</span></div>
+      <div class="row"><span class="k">选品初筛打分排序</span><span class="v">干活+进化循环 · <b>Dify</b> 工作流:按毛利/竞争/季节性评分→你标命中款再喂回校准</span></div>
+      <div class="row"><span class="k">关键词/搜索词整理扩展</span><span class="v">干活循环 · <b>扣子</b>:输入种子词→AI 扩词分组去重→可直接填后台</span></div>
+      <div class="row"><span class="k">竞品价格/库存监控</span><span class="v">触发循环 · <b>n8n</b> 定时:走官方 API/合规源,有变动推飞书/微信</span></div>
+      <div class="row"><span class="k">客服邮件/站内信起草</span><span class="v">触发+检查循环 · <b>n8n+Dify</b>:新邮件触发→AI 起草→质检→进草稿等你确认</span></div>
+      <div class="row"><span class="k">差评/Review 监控+回复草稿</span><span class="v">触发+检查循环 · <b>扣子</b>:官方API取新评→AI 起草合规回复→低星优先标红</span></div>
+      <div class="row"><span class="k">广告报表周复盘</span><span class="v">进化循环 · <b>Dify</b>:每周喂报表→出"加预算/砍词/调价"建议→执行后结果再喂回</span></div>
+    </div>
+
+    <div class="card full">
+      <h2><span class="ic" style="background:var(--gold)">⚙️</span>3 个"复制即跑"的跨境循环模板</h2>
+      <div class="grid" style="gap:10px">
+        <div>
+          <div class="tpl"><b>① Listing 流水线循环</b>(干活+检查)
+            <div class="meta">目的:丢一个 SKU/卖点,自动产出可上架的标题+五点+关键词,且过合规自检</div>
+            <div class="step">① 表单填【产品+卖点+站点/语言】→ ② AI 写标题/五点/A+ → ③ 扩后台搜索词去重 → ④ 质检节点对照"字数/禁用词/夸大宣传"逐条查,不过打回②重写 → ⑤ 合格出卡,你验收上架。维护:平台违禁词表更到质检节点。</div>
+          </div>
+          <div class="tpl"><b>② 选品初筛打分循环</b>(干活+进化)
+            <div class="meta">目的:一批候选 SKU 自动按你的标准打分排序,越用越懂你口味</div>
+            <div class="step">① 候选(公开/官方渠道信息)粘进 Dify → ② AI 按毛利/竞争/季节性/退货风险逐项打分给理由 → ③ 出"推荐度高→低"清单 → ④ 进化:把实际跑得好/踩雷的款回标,下轮自动调权重。提醒:数据走公开/官方渠道,不抓禁采内容。</div>
+          </div>
+        </div>
+        <div>
+          <div class="tpl"><b>③ Review/客服 自动起草循环</b>(触发+检查)
+            <div class="meta">目的:新评论/客服信一来自动备好合规回复草稿,你一键确认再发</div>
+            <div class="step">① n8n 定时经<b>官方 API</b>拉新 Review/站内信 → ② 分类(好评/差评/咨询,差评标红)→ ③ AI 按模板写回复草稿 → ④ 质检:有无承诺返现/索好评/辱骂,违规重写 → ⑤ 进飞书/邮箱草稿箱等你确认,<b>绝不自动直发</b>。红线:只走官方API、不诱导改评。</div>
+          </div>
+          <div class="tpl" style="background:var(--tint);border-color:#cbe0f1"><b>🔁 怎么变"进化循环"</b>
+            <div class="step">给任何一个循环加一步:每周回看"哪次结果最好",把规律写回它的设定——下周更准。这是高手和新手的分水岭。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>想要现成能导入、复制即跑的跨境循环模板包?</h2>
+    <p>上面是"怎么搭"的地图。完整版把 8 个跨境循环(选品/Listing/差评/广告/补货/客服/退货/竞品监控)做成可直接导入扣子/Dify 的模板 + 图文搭建教程。先免费拿几条提示词上手。</p>
+    <div class="cta-row">
+      <a href="../免费提示词/" class="primary">先免费试 6 条提示词 →</a>
+      <a href="../循环包/" class="ghost">看完整循环模板库 ¥49 →</a>
+    </div>
+  </div>
+
+  <div class="foot">
+    真·大厂 AI 工程师整理。打印贴墙更顺手(Ctrl/Cmd+P)。觉得有用,欢迎收藏分享 🙏<br/>
+    <a href="../index.html">← 回首页</a> &nbsp;·&nbsp; <a href="../循环怎么搭/">循环怎么搭(教程)</a> &nbsp;·&nbsp; <a href="../循环包/">循环模板库 ¥49</a> &nbsp;·&nbsp; <a href="../速查表/">跨境 AI 速查表</a><br/>
+    <span style="opacity:.7">本表为方法分享,不构成任何收益承诺;循环需自行搭建与维护,评论/数据请走平台合规途径。</span>
+  </div>
+</div>
+</body>
+</html>
